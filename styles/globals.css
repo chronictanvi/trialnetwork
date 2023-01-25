@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 }
+
+button{
+  padding:5px;
+  font-size:larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ff4344;
+  font-weight: bolder;
+  border-radius: 10px;
+  border-style: none;
+}
