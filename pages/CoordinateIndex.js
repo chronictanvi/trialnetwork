@@ -43,15 +43,56 @@ const CoordinateIndex = () => {
   };
 
   return (
-    <div>
-      <h1>
+    <div className="grid grid-cols-3 gap-y-6 grid-rows-4">
+      {/* --row 1-- */}
+      <div className="cols-span-1 "></div>
+
+      <div className="cols-span-1 ">
+        <p className="font-sans text-xl col-span-1  h-[fit-content]">
+          Current Coordinates
+        </p>
+      </div>
+
+      <div className="cols-span-1 "></div>
+
+      {/* --row 2-- */}
+      <div className="cols-span-1 "></div>
+
+      <div className="cols-span-1 ">
+        <button onClick={up} className=" px-48">
+          {" "}
+          ↑{" "}
+        </button>
+      </div>
+
+      <div className="col-span-1"> </div>
+
+      {/* --row 3-- */}
+      <div className="contents col-span-1 items-end ">
+        <button onClick={left}> ← </button>
+      </div>
+
+      <div className="text-3xl col-span-1 p-10 bg-slate-400	">
         {" "}
-        Current Coordinates {postsArray[coordinates[0]][coordinates[1]]}{" "}
-      </h1>
-      <button onClick={left}> ← </button>
-      <button onClick={right}> →</button>
-      <button onClick={up}> ↑ </button>
-      <button onClick={down}> ↓ </button>
+        {postsArray[coordinates[0]][coordinates[1]]}{" "}
+      </div>
+
+      <div className=" contents col-span-1">
+        <button onClick={right} className=" col-span-1">
+          {" "}
+          →
+        </button>
+      </div>
+      {/* --row 4-- */}
+
+      <div className="col-span-1" />
+      <div className="col-span-1">
+        <button onClick={down} className=" px-48">
+          {" "}
+          ↓{" "}
+        </button>
+      </div>
+      <div className="col-span-1" />
     </div>
   );
 };

@@ -17,13 +17,6 @@ export default function Home() {
         <link href="/dist/output.css" rel="stylesheet" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-        </div>
-
         <div>
           <CoordinateIndex></CoordinateIndex>
         </div>
