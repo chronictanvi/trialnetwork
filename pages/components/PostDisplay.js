@@ -1,18 +1,6 @@
 import { useState } from "react";
 
-const postsArray = [
-  ["this is a post", "this is another post", "this is the last post"],
-  ["this a down post", "this is the next down post", "this is last down post"],
-  [
-    "this is  post rock bottom post",
-    "this post is next rock bottom",
-    "this is final rock bottom",
-  ],
-];
-
-const CoordinateIndex = () => {
-  const [coordinates, setCoordinates] = useState([0, 0]);
-
+const PostDisplay = () => {
   // Function is called everytime increment button is clicked
   // as long as coordinate is longer than posts array.length we will keep incrementing
 
@@ -97,4 +85,4 @@ const CoordinateIndex = () => {
   );
 };
 
-export default CoordinateIndex;
+export default PostDisplay;

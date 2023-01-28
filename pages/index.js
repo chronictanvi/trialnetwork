@@ -2,11 +2,26 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import CoordinateIndex from "./CoordinateIndex.js";
+import CoordinateIndex from "./components/PostDisplay.js";
+import Grid from "./components/Grid.js";
+import Form from "./components/Form.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const postsArray = [
+    ["this is a post", "this is another post", "this is the last post"],
+    [
+      "this a down post",
+      "this is the next down post",
+      "this is last down post",
+    ],
+    ["this is  post rock bottom post", "this post is next rock bottom", null],
+  ];
+
+  const [coordinates, setCoordinates] = useState([0, 0]);
+  //hooks go inside component
+
   return (
     <>
       <Head>
@@ -16,11 +31,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link href="/dist/output.css" rel="stylesheet" />
       </Head>
-      <main className={styles.main}>
-        <div>
-          <CoordinateIndex></CoordinateIndex>
-        </div>
-      </main>
+      <div className="bg-duboisSecondary flex flex-col sm:flex-row">
+        <section className="sm:p-20 sm:w-3/5 w-full">
+          <div className="text-white px-10"></div>
+          <h1 className="text-9xl text-center">Comrade</h1>
+          <h2 className="text-3xl p-10 text-center	"> An app to do something</h2>
+        </section>
+        <section className=" w-screen">
+          <div className=" text-white">
+            <PostDisplay />
+            <div class="relative rounded-xl overflow-auto p-8">
+              <Grid></Grid>
+              <Form></Form>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
