@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 let nextId = 0;
 
 export default function Form({ postsArray, setPostsArray, coordinates }) {
-  const [postText, setPostText] = useState("");
+  const [postText, setPostText] = useState(
+    postsArray[coordinates[0]][coordinates[1]]
+  );
+
+  useEffect(() => {
+    setPostText(postsArray[coordinates[0]][coordinates[1]]);
+  }, [coordinates]);
+  // postTexr is set to empty string earlier const [postText, setPostText] = useState("");
 
   return (
     <>

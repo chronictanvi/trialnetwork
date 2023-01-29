@@ -5,22 +5,26 @@ import { Inter } from "@next/font/google";
 import PostDisplay from "./components/PostDisplay.js";
 import Grid from "./components/Grid.js";
 import Form from "./components/Form.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
+const defaultPostsState = [
+  ["this is a post", "this is another post", "this is the last post"],
+  ["this a down post", "this is the next down post", "this is last down post"],
+  ["this is  post rock bottom post", "this post is next rock bottom", null],
+];
 
 export default function Home() {
-  const [postsArray, setPostsArray] = useState([
-    ["this is a post", "this is another post", "this is the last post"],
-    [
-      "this a down post",
-      "this is the next down post",
-      "this is last down post",
-    ],
-    ["this is  post rock bottom post", "this post is next rock bottom", null],
-  ]);
+  const router = useRouter();
+  const [postsArray, setPostsArray] = useState(
+    router.query.posts ? JSON.parse(router.query.posts) : defaultPostsState
+  );
 
   const [coordinates, setCoordinates] = useState([0, 0]);
+  useEffect(() => {
+    window.history.pushState(null, null, `?posts=${JSON.stringify(postsArray)}`);
+  });
   //hooks go inside component
 
   return (
