@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const PostDisplay = () => {
+const PostDisplay = ({ coordinates, setCoordinates, postsArray }) => {
   // Function is called everytime increment button is clicked
   // as long as coordinate is longer than posts array.length we will keep incrementing
 
@@ -31,56 +29,35 @@ const PostDisplay = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-y-6 grid-rows-4">
-      {/* --row 1-- */}
-      <div className="cols-span-1 "></div>
-
-      <div className="cols-span-1 ">
-        <p className="font-sans text-xl col-span-1  h-[fit-content]">
-          Current Coordinates
-        </p>
-      </div>
-
-      <div className="cols-span-1 "></div>
-
-      {/* --row 2-- */}
-      <div className="cols-span-1 "></div>
-
-      <div className="cols-span-1 ">
-        <button onClick={up} className=" px-48">
+    <div className="p-12">
+      <p className="font-sans text-4xl text-center h-[fit-content]">
+        Current Coordinates
+      </p>
+      <div className="flex flex-col items-center">
+        <button onClick={up} className="text-6xl w-[70px]">
           {" "}
           ↑{" "}
         </button>
-      </div>
+        <div className="flex items-center">
+          <button onClick={left} className="text-6xl">
+            {" "}
+            ←{" "}
+          </button>
+          <div className="text-3xl p-10 bg-slate-400	">
+            {" "}
+            {postsArray[coordinates[0]][coordinates[1]]}{" "}
+          </div>
 
-      <div className="col-span-1"> </div>
-
-      {/* --row 3-- */}
-      <div className="contents col-span-1 items-end ">
-        <button onClick={left}> ← </button>
-      </div>
-
-      <div className="text-3xl col-span-1 p-10 bg-slate-400	">
-        {" "}
-        {postsArray[coordinates[0]][coordinates[1]]}{" "}
-      </div>
-
-      <div className=" contents col-span-1">
-        <button onClick={right} className=" col-span-1">
-          {" "}
-          →
-        </button>
-      </div>
-      {/* --row 4-- */}
-
-      <div className="col-span-1" />
-      <div className="col-span-1">
-        <button onClick={down} className=" px-48">
+          <button onClick={right} className="text-6xl">
+            {" "}
+            →
+          </button>
+        </div>
+        <button onClick={down} className=" text-6xl w-[70px]">
           {" "}
           ↓{" "}
         </button>
       </div>
-      <div className="col-span-1" />
     </div>
   );
 };

@@ -1,22 +1,21 @@
 import Button from "./Button";
 export default Grid;
 
-function Grid() {
+function Grid({ setCoordinates }) {
   return (
-    <div className="grid grid-cols-3 grid-rows-3 gap-6 font-mono text-white text-sm font-bold leading-6 bg-stripes-fuchsia  text-center">
-      <Button value="01" />
-
+    <div className="w-1/2 grid grid-cols-3 grid-rows-3 gap-6 font-mono text-white text-sm font-bold leading-6 bg-stripes-fuchsia  text-center">
       {/* // postArray[coordinates[0], coordinates[1]] */}
-      <Button value="02" />
-      <Button value="03" />
+      <Button coordinates={[0, 0]} setCoordinates={setCoordinates} />
+      <Button coordinates={[0, 1]} setCoordinates={setCoordinates} />
+      <Button coordinates={[0, 2]} setCoordinates={setCoordinates} />
 
-      <Button value="04" />
-      <Button value="05" />
-      <Button value="06" />
+      <Button coordinates={[1, 0]} setCoordinates={setCoordinates} />
+      <Button coordinates={[1, 1]} setCoordinates={setCoordinates} />
+      <Button coordinates={[1, 2]} setCoordinates={setCoordinates} />
 
-      <Button value="07" />
-      <Button value="08" />
-      <Button value="09" />
+      <Button coordinates={[2, 0]} setCoordinates={setCoordinates} />
+      <Button coordinates={[2, 1]} setCoordinates={setCoordinates} />
+      <Button coordinates={[2, 2]} setCoordinates={setCoordinates} />
     </div>
   );
 }
