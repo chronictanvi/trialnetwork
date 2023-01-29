@@ -5,8 +5,7 @@ import { Inter } from "@next/font/google";
 import PostDisplay from "./components/PostDisplay.js";
 import Grid from "./components/Grid.js";
 import Form from "./components/Form.js";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const defaultPostsState = [
@@ -16,15 +15,10 @@ const defaultPostsState = [
 ];
 
 export default function Home() {
-  const router = useRouter();
-  const [postsArray, setPostsArray] = useState(
-    router.query.posts ? JSON.parse(router.query.posts) : defaultPostsState
-  );
+  const [postsArray, setPostsArray] = useState(defaultPostsState);
 
   const [coordinates, setCoordinates] = useState([0, 0]);
-  useEffect(() => {
-    window.history.pushState(null, null, `?posts=${JSON.stringify(postsArray)}`);
-  });
+
   //hooks go inside component
 
   return (
