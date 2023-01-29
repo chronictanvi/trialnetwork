@@ -36,12 +36,13 @@ export default function Home() {
         <h2 className="text-3xl p-10 text-center	"> An app to do something</h2>
       </section>
       <div className=" text-white flex flex-col items-center">
+        <Grid setCoordinates={setCoordinates}></Grid>
         <PostDisplay
           coordinates={coordinates}
           setCoordinates={setCoordinates}
           postsArray={postsArray}
         />
-        <Grid setCoordinates={setCoordinates}></Grid>
+
         <Form
           setPostsArray={setPostsArray}
           postsArray={postsArray}
