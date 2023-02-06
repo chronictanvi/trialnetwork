@@ -30,24 +30,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link href="/dist/output.css" rel="stylesheet" />
       </Head>
-      <section className="sm:p-20 sm:w-3/5 w-full">
+      <section className="sm:p-20  w-full">
         <div className="text-white px-10"></div>
-        <h1 className="text-9xl text-center">Comrade</h1>
-        <h2 className="text-3xl p-10 text-center	"> An app to do something</h2>
+        <h1 className="text-9xl text-center">~</h1>
+        <h2 className="text-xl p-10 text-center"> New ways of connecting </h2>
       </section>
       <div className=" text-white flex flex-col items-center">
         <Grid setCoordinates={setCoordinates}></Grid>
-        <PostDisplay
-          coordinates={coordinates}
-          setCoordinates={setCoordinates}
-          postsArray={postsArray}
-        />
-
-        <Form
-          setPostsArray={setPostsArray}
-          postsArray={postsArray}
-          coordinates={coordinates}
-        ></Form>
+        <div className="grid grid-cols-2 gap-20 m-10">
+          <div>
+            <PostDisplay
+              coordinates={coordinates}
+              setCoordinates={setCoordinates}
+              postsArray={postsArray}
+            />
+          </div>
+          <div>
+            <Form
+              setPostsArray={setPostsArray}
+              postsArray={postsArray}
+              coordinates={coordinates}
+            ></Form>
+          </div>
+        </div>
       </div>
     </>
   );

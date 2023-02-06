@@ -14,14 +14,16 @@ export default function Form({ postsArray, setPostsArray, coordinates }) {
 
   return (
     <>
-      <h1 className="text-4xl">Type your post here</h1>
+      <h1 className="text-xl">Type your post here:</h1>
       <input
         value={postText}
         type="text"
         onChange={(event) => setPostText(event.target.value)}
+        className="p-12 m-5"
       />
       {/* // event object has a few things on it including whats inside the typed form */}
       <button
+        className="p-5"
         onClick={() => {
           const newPostsArray = [...postsArray];
           newPostsArray[coordinates[0]][coordinates[1]] = postText;

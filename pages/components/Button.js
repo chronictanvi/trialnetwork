@@ -12,10 +12,7 @@ function Button({ coordinates, setCoordinates }) {
   }
 
   return (
-    <button
-      className="p-4 bg-fuchsia-500 shadow-lg rounded-lg"
-      onClick={handleClick}
-    >
+    <button className="p-4 bg-white shadow-lg rounded-lg" onClick={handleClick}>
       {/* // for display */}
       {coordinates.join(",")}
     </button>

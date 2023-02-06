@@ -29,9 +29,9 @@ const PostDisplay = ({ coordinates, setCoordinates, postsArray }) => {
   };
 
   return (
-    <div className="p-12">
-      <p className="font-sans text-4xl text-center h-[fit-content]">
-        Current Coordinates
+    <div className="">
+      <p className="font-sans mb-10  text-xl text-center h-[fit-content]">
+        Post at current coordinates:
       </p>
       <div className="flex flex-col items-center">
         <button onClick={up} className="text-6xl w-[70px]">
