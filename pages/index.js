@@ -7,9 +7,9 @@ import Head from "next/head";
 
 import { Inter } from "@next/font/google";
 
-import PostDisplay from "./components/PostDisplay.js";
-import Grid from "./components/Grid.js";
-import Form from "./components/Form.js";
+import PostDisplay from "../components/PostDisplay.js";
+import Grid from "../components/Grid.js";
+import Form from "../components/Form.js";
 import React, { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
