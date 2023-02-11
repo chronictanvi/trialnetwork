@@ -1,3 +1,8 @@
+// THA HOMEPAGE
+
+import { getFirestore, collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { firebaseApp } from "../firebase.js";
 import Head from "next/head";
 
 import { Inter } from "@next/font/google";
@@ -5,7 +10,7 @@ import { Inter } from "@next/font/google";
 import PostDisplay from "./components/PostDisplay.js";
 import Grid from "./components/Grid.js";
 import Form from "./components/Form.js";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const defaultPostsState = [
@@ -19,7 +24,16 @@ export default function Home() {
 
   const [coordinates, setCoordinates] = useState([0, 0]);
 
-  //hooks go inside component
+  //below: this is fetching the firebase database
+  const [value, loading, error] = useCollection(
+    collection(getFirestore(firebaseApp), "posts"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
+
+  //hooks go inside component. hook start with use
+  console.log(value, loading, error);
 
   return (
     <>
@@ -53,6 +67,24 @@ export default function Home() {
             ></Form>
           </div>
         </div>
+      </div>
+
+      {/* below is from https://github.com/csfrequency/react-firebase-hooks/tree/09bf06b28c82b4c3c1beabb1b32a8007232ed045/firestore */}
+      <div>
+        <p>
+          {error && <strong>Error: {JSON.stringify(error)}</strong>}
+          {loading && <span>Collection: Loading...</span>}
+          {value && (
+            <span>
+              Collection:{" "}
+              {value.docs.map((doc) => (
+                <React.Fragment key={doc.id}>
+                  {JSON.stringify(doc.data())},{" "}
+                </React.Fragment>
+              ))}
+            </span>
+          )}
+        </p>
       </div>
     </>
   );
