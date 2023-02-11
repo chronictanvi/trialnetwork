@@ -1,5 +1,4 @@
 export default Button;
-import { useState } from "react";
 
 function Button({ coordinates, setCoordinates }) {
   //const [coordinates, setcoordinates] = useState(Array(9).fill(null));
