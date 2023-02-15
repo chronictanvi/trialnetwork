@@ -45,7 +45,7 @@ export default function Home() {
         <link href="/dist/output.css" rel="stylesheet" />
 
         {/* -----trying out tips----- this could later be a component.  */}
-        <div className="flex z-30 w-full h-2/5 flex-col	bottom-0 fixed justify-end align-bottom pointer-events-none		">
+        {/* <div className="flex z-30 w-full h-2/5 flex-col	bottom-0 fixed justify-end align-bottom pointer-events-none		">
           <div className="mr-[2vw] ml-auto	mb-5 bg-orange-200	rounded-sm	border-2	border-white	text-zinc-900	transition-all	pointer-events-auto	animate-engine cursor-help	max-w-xs p-5">
             <p>
               What if a conversation took place in every direction? What would
@@ -53,7 +53,7 @@ export default function Home() {
               threat?
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* -------- */}
       </Head>
@@ -63,6 +63,7 @@ export default function Home() {
         <h2 className="text-xl p-10 text-center"> New ways of connecting </h2>
       </section>
       <div className=" text-white flex flex-col items-center">
+        <Alert></Alert>
         <Grid setCoordinates={setCoordinates}></Grid>
         <div className="grid grid-cols-2 gap-20 m-10">
           <div>
