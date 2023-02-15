@@ -43,6 +43,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link href="/dist/output.css" rel="stylesheet" />
+
+        {/* -----trying out tips----- this could later be a component.  */}
+        <div className="flex z-30 w-full h-2/5 flex-col	bottom-0 fixed justify-end align-bottom pointer-events-none		">
+          <div className="mr-[2vw] ml-auto	mb-5 bg-orange-200	rounded-sm	border-2	border-white	text-zinc-900	transition-all	pointer-events-auto	animate-engine cursor-help	max-w-xs p-5">
+            <p>
+              What if a conversation took place in every direction? What would
+              surround it? What would remain at the corners? A promise? A
+              threat?
+            </p>
+          </div>
+        </div>
+
+        {/* -------- */}
       </Head>
       <section className="sm:p-20  w-full">
         <div className="text-white px-10"></div>
