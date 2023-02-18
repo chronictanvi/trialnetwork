@@ -10,7 +10,9 @@ import { Inter } from "@next/font/google";
 import PostDisplay from "../components/PostDisplay.js";
 import Grid from "../components/Grid.js";
 import Form from "../components/Form.js";
-import React, { useState } from "react";
+import Modal from "../components/Alert.js";
+
+import React, { useState, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const defaultPostsState = [
@@ -22,6 +24,14 @@ const defaultPostsState = [
 export default function Home() {
   const [postsArray, setPostsArray] = useState(defaultPostsState);
 
+  //Modal
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setShowModal(true);
+  }, []);
+
+  //Firebase
   const [coordinates, setCoordinates] = useState([0, 0]);
 
   //below: this is fetching the firebase database
@@ -49,6 +59,9 @@ export default function Home() {
         <h1 className="text-9xl text-center">~</h1>
         <h2 className="text-xl p-10 text-center"> New ways of connecting </h2>
       </section>
+
+      {showModal && <Modal />}
+
       <div className=" text-white flex flex-col items-center">
         <Grid setCoordinates={setCoordinates}></Grid>
         <div className="grid grid-cols-2 gap-20 m-10">
