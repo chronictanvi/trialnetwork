@@ -19,3 +19,5 @@ function Grid({ setCoordinates }) {
     </div>
   );
 }
+
+//lets make this a grid usiing a loop instead of hardcoded

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Modal = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   // Set isModalVisible to true on mount
   useEffect(() => {
