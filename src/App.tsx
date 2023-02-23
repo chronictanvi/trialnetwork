@@ -4,6 +4,7 @@ import Grid from "./Grid";
 import { SQUARE_ROW_COUNT } from "./constants";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import Form from "./Form";
+
 import { getIndexFromCoordinates } from "./utils";
 import { usePresence, useSharedReducer } from "driftdb-react";
 
@@ -31,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 import { getDatabase, ref, set, onValue, push } from "firebase/database";
+// import Label from "./Label";
 
 const db = getDatabase();
 
@@ -106,7 +108,7 @@ function App() {
     ]);
   });
   return (
-    <div>
+    <>
       <div className=" grid grid-cols-2">
         <div>
           <h1 className="text-left">Comrade</h1>
@@ -114,6 +116,15 @@ function App() {
         <div>
           <p className="editorial pt-6 text-right text-sm">v0.2</p>
         </div>
+      </div>
+      <div className=" grid grid-cols-2 my-5">
+        <div>
+          <h1 className="text-base text-left">New Grid</h1>
+        </div>
+        <div>
+          <h1 className="text-base text-left">Load Grid</h1>
+        </div>
+        {/* <Label></Label> */}
       </div>
       <Grid
         squares={state.squares}
@@ -126,7 +137,7 @@ function App() {
           dispatch({ type: ActionType.SetSquare, text, currentCoordinates });
         }}
       />
-    </div>
+    </>
   );
 }
 
