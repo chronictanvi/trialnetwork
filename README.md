@@ -1,3 +1,14 @@
+
+
+
+#### questions
+- what is the deal with pnpm lock file 
+
+ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with package.json
+Error: Command "pnpm install" exited with 1
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
