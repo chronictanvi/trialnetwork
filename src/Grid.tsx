@@ -44,13 +44,17 @@ export default function Grid({
         } else if (square !== "") {
           color = "bg-green-500";
         } else {
-          color = "bg-slate-500";
+          color = "bg";
         }
         return (
           <div
             title={square}
             key={index}
-            className={classNames("w-10 h-10", color)}
+            className={classNames(
+              "w-10 h-10",
+              color,
+              "border-[1px] border-slate-50"
+            )}
           />
         );
       })}

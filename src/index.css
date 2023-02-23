@@ -19,6 +19,9 @@
 }
 }
 
+
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -78,10 +81,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+
+textarea  
+{  
+   font-family:monospace;  
+   font-size: 12px;   
+   width: 20rem;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color:#FFF8E0;
+    background-color: #0D0D0D;
   }
   a:hover {
     color: #747bff;

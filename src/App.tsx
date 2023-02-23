@@ -107,7 +107,14 @@ function App() {
   });
   return (
     <div>
-      <h1 className="">Cluster</h1>
+      <div className=" grid grid-cols-2">
+        <div>
+          <h1 className="text-left">Comrade</h1>
+        </div>
+        <div>
+          <p className="editorial pt-6 text-right text-sm">v0.2</p>
+        </div>
+      </div>
       <Grid
         squares={state.squares}
         currentCoordinates={currentCoordinates}
