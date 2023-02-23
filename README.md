@@ -1,7 +1,7 @@
 
 
 
-#### questions
+## questions
 - what is the deal with pnpm lock file 
 
 ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with package.json
