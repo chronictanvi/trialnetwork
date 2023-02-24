@@ -4,10 +4,19 @@ export function classNames(...classes: (string | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export function getIndexFromCoordinates([row, column]: [
-  number,
-  number
-]): number {
-  return row * SQUARE_ROW_COUNT + column;
+//index is of type number and it returns an array with two elements, both of which are numbers 
+
+export function getCoordinatesFromIndex(index: number): [number, number] {
+  const row = Math.floor(index / SQUARE_ROW_COUNT);
+  const column = index % SQUARE_ROW_COUNT;
+  return [row, column];
 }
 
+export function getCoordinateKey(coords: [number, number]): string {
+  const row = coords[0];
+  const rowString = row.toString().padStart(2, "0");
+  const col = coords[1];
+  const colString = col.toString().padStart(2, "0");
+
+  return `${rowString},${colString}`;
+}

@@ -1,28 +1,25 @@
-import { SQUARE_ROW_COUNT, SQUARE_SIZE } from "./constants";
-import { classNames } from "./utils";
+import { SQUARE_ROW_COUNT } from "./constants";
+import { classNames, getCoordinatesFromIndex } from "./utils";
 
 interface Props {
-  squares: string[];
+  squares: { [key: string]: { content: string; author: string } };
   currentCoordinates: [number, number];
-  otherUsers: { [key: string]: [number, number] };
 }
 
-function isInhabited(
-  otherUsers: { [key: string]: [number, number] },
-  row: number,
-  column: number
-) {
-  return Object.values(otherUsers).some(
-    (coordinates) =>
-      coordinates.value[0] === row && coordinates.value[1] === column
-  );
-}
+export default function Grid({ squares, currentCoordinates }: Props) {
+  const allSquares = Array(SQUARE_ROW_COUNT * SQUARE_ROW_COUNT).fill(null);
+  for (const [coordString, post] of Object.entries(squares)) {
+    const coords = coordString.split(",");
 
-export default function Grid({
-  squares,
-  currentCoordinates,
-  otherUsers,
-}: Props) {
+    const row = parseInt(coords[0]);
+    const column = parseInt(coords[1]);
+    const index = row * SQUARE_ROW_COUNT + column;
+
+    const color = "bg-green-500";
+
+    allSquares[index] = { color, ...post };
+  }
+
   return (
     <div
       style={{
@@ -31,24 +28,26 @@ export default function Grid({
       }}
       className="grid gap-1"
     >
-      {squares.map((square, index) => {
-        const row = Math.floor(index / SQUARE_ROW_COUNT);
-        const column = index % SQUARE_ROW_COUNT;
+      {/* 
+     below:  for square with content, paint green. for cursor (current) -> red. otherwise slate.  */}
+
+      {allSquares.map((square, index) => {
+        const [row, column] = getCoordinatesFromIndex(index);
+
         const isCurrent =
           row === currentCoordinates[0] && column === currentCoordinates[1];
         let color;
+
         if (isCurrent) {
           color = "bg-red-500";
-        } else if (isInhabited(otherUsers, row, column)) {
-          color = "bg-yellow-500";
-        } else if (square !== "") {
-          color = "bg-green-500";
+        } else if (square != null) {
+          color = square.color;
         } else {
-          color = "bg";
+          color = "bg-slate-500";
         }
+
         return (
           <div
-            title={square}
             key={index}
             className={classNames(
               "w-10 h-10",
