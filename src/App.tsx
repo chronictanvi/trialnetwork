@@ -10,7 +10,7 @@ import { db } from "./firebase";
 import { ref, set } from "firebase/database";
 import { getCoordinateKey } from "./utils";
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const url = new URL(document.location);
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
