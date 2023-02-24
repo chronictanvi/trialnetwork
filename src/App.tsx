@@ -4,6 +4,7 @@ import Grid from "./Grid";
 import { SQUARE_ROW_COUNT } from "./constants";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import Form from "./Form";
+import { v4 as uuidv4 } from "uuid";
 
 import { useObject } from "react-firebase-hooks/database";
 import { db } from "./firebase";
@@ -12,10 +13,10 @@ import { getCoordinateKey } from "./utils";
 
 // import { useHistory } from "react-router-dom";
 
-const url = new URL(document.location);
+const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
 
-const gridId = url.searchParams.get("gridId");
+let gridId = url.searchParams.get("gridId");
 //if the grid id doesnt exist then we should be able to create a grid there.
 
 function App() {
@@ -56,10 +57,12 @@ function App() {
 
   const squares = snapshot?.val();
 
-  console.log(squares);
-
   const handleNewGrid = () => {
-    const newId = parseInt(gridId) + 1;
+    if (!gridId) {
+      gridId = uuidv4();
+      window.history.pushState({}, "", `?gridId=${gridId}`);
+    }
+    const newId = parseInt(gridId!) + 1;
     const path = `/grids/${newId}/00,00`;
     set(ref(db, path), { content: "hello world!" });
 

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 interface Props {
-  square: string;
+  square?: { content: string; author: string };
   setSquare: (text: string) => void;
 }
-
 
 export default function Form({ square, setSquare }: Props) {
   return (
