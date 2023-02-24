@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@reecelucas/react-use-hotkeys": "^2.0.0",
-    "driftdb-react": "^1.0.9",
     "firebase": "^9.17.1",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
@@ -30,14 +29,10 @@
   "description": "",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NicholasLYang/grid-collab.git"
+    "type": "git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NicholasLYang/grid-collab/issues"
-  },
-  "homepage": "https://github.com/NicholasLYang/grid-collab#readme"
+
 }
