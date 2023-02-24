@@ -38,12 +38,15 @@ export default function Grid({ squares, currentCoordinates }: Props) {
           row === currentCoordinates[0] && column === currentCoordinates[1];
         let color;
 
+        // gray and green setting:
+        if (square != null) {
+          if (square.content == "") {
+            color = "bg-slate-500";
+          } else color = square.color;
+        }
+
         if (isCurrent) {
           color = "bg-red-500";
-        } else if (square != null) {
-          color = square.color;
-        } else {
-          color = "bg-slate-500";
         }
 
         return (
