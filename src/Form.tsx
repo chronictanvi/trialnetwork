@@ -5,6 +5,7 @@ interface Props {
   setSquare: (text: string) => void;
 }
 
+
 export default function Form({ square, setSquare }: Props) {
   return (
     <textarea

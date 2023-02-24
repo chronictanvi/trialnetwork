@@ -4,7 +4,7 @@ import Grid from "./Grid";
 import { SQUARE_ROW_COUNT } from "./constants";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import Form from "./Form";
-
+import Label from "./Label";
 import { useObject } from "react-firebase-hooks/database";
 import { db } from "./firebase";
 import { ref, set } from "firebase/database";
@@ -53,7 +53,6 @@ function App() {
   // see: https://github.com/csfrequency/react-firebase-hooks/tree/09bf06b28c82b4c3c1beabb1b32a8007232ed045/database
 
   const squares = snapshot?.val();
-
   return (
     <>
       <div className=" grid grid-cols-2">
@@ -72,6 +71,16 @@ function App() {
           <h1 className="text-base text-left">Load Grid</h1>
         </div>
       </div>
+
+      <Label
+        name={squares[currentCoordsKey]?.author || ""}
+        setName={async (author) => {
+          set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
+            author,
+          });
+        }}
+      ></Label>
+
       <Grid squares={squares} currentCoordinates={currentCoordinates} />
       <Form
         square={squares[currentCoordsKey]}
