@@ -10,6 +10,8 @@ import { db } from "./firebase";
 import { ref, set } from "firebase/database";
 import { getCoordinateKey } from "./utils";
 
+import { useHistory } from "react-router-dom";
+
 const url = new URL(document.location);
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
 
@@ -57,19 +59,9 @@ function App() {
   console.log(squares);
 
   const handleNewGrid = () => {
-    console.log(squares);
-
-    // so this wont work because its an object
-    let newSquares = squares;
-
-    Object.keys(newSquares).forEach(function (key, index) {
-      newSquares[key].content = null;
-      newSquares[key].author = null;
-    });
-
-    console.log(newSquares);
-
-    set(ref(db, `/grids/`), newSquares);
+    const newId = parseInt(gridId) + 1;
+    const path = `/grids/${newId}/00,00`;
+    set(ref(db, path), { content: "hello world!" });
 
     // make a copy of squares, change all the values to null.
     // then write that to firebase
@@ -89,7 +81,7 @@ function App() {
         <div>
           <h1
             className="text-base cursor-pointer text-left"
-            // onClick={handleNewGrid}
+            onClick={handleNewGrid}
           >
             New Grid
           </h1>
