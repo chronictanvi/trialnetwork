@@ -13,8 +13,7 @@ import { getCoordinateKey } from "./utils";
 const url = new URL(document.location);
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
 
-// const gridId = url.searchParams.get("gridId");
-const gridId = 1;
+const gridId = url.searchParams.get("gridId");
 //if the grid id doesnt exist then we should be able to create a grid there.
 
 function App() {
@@ -55,6 +54,8 @@ function App() {
 
   const squares = snapshot?.val();
 
+  console.log(squares);
+
   const handleNewGrid = () => {
     console.log(squares);
 
@@ -88,7 +89,7 @@ function App() {
         <div>
           <h1
             className="text-base cursor-pointer text-left"
-            onClick={handleNewGrid}
+            // onClick={handleNewGrid}
           >
             New Grid
           </h1>
