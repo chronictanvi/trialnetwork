@@ -27,7 +27,7 @@ let gridId = url.searchParams.get("gridId");
 // Step 2: Make Demo
 // Step 3: Build out UI for load grid etc
 
-function App() {
+async function App() {
   const [currentCoordinates, setCurrentCoordinates] = useState<
     [number, number]
   >([0, 0]);
@@ -47,8 +47,8 @@ function App() {
     // TODO: Update firebase
   };
 
-  const getCurrentIp = () => {
-    return fetch("https://api64.ipify.org/?format=json")
+  const getCurrentIp = async () => {
+    return await fetch("https://api64.ipify.org/?format=json")
       .then((result) => result.json())
       .then((data) => data.ip);
   };
@@ -113,7 +113,8 @@ function App() {
     // then write that to firebase
   };
 
-  console.log(getCurrentIp());
+  const ip = await getCurrentIp();
+  console.log(ip);
 
   return (
     <>
