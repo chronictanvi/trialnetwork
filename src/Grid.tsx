@@ -3,7 +3,7 @@ import { classNames, getCoordinatesFromIndex } from "./utils";
 
 interface Props {
   squares: { [key: string]: { content: string; author: string } };
-  currentCoordinates: [number, number];
+  currentCoordinates: number[];
 }
 
 export default function Grid({ squares, currentCoordinates }: Props) {

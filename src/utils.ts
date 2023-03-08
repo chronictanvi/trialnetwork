@@ -4,7 +4,7 @@ export function classNames(...classes: (string | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-//index is of type number and it returns an array with two elements, both of which are numbers 
+//index is of type number and it returns an array with two elements, both of which are numbers
 
 export function getCoordinatesFromIndex(index: number): [number, number] {
   const row = Math.floor(index / SQUARE_ROW_COUNT);
@@ -12,11 +12,17 @@ export function getCoordinatesFromIndex(index: number): [number, number] {
   return [row, column];
 }
 
-export function getCoordinateKey(coords: [number, number]): string {
+//convert list [0,5] -> 00,05
+export function getCoordinateKey(coords: number[]): string {
   const row = coords[0];
   const rowString = row.toString().padStart(2, "0");
   const col = coords[1];
   const colString = col.toString().padStart(2, "0");
 
   return `${rowString},${colString}`;
+}
+//convert string 00,05 -> list [0,5]
+export function getCoordinatesFromKey(key: string): number[] {
+  const coordinates = key.split(",").map((item) => parseInt(item));
+  return coordinates;
 }
