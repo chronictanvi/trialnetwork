@@ -27,7 +27,7 @@ let gridId = url.searchParams.get("gridId");
 // Step 2: Make Demo
 // Step 3: Build out UI for load grid etc
 
-async function App() {
+function App() {
   const [currentCoordinates, setCurrentCoordinates] = useState<
     [number, number]
   >([0, 0]);
@@ -48,9 +48,10 @@ async function App() {
   };
 
   const getCurrentIp = async () => {
-    return await fetch("https://api64.ipify.org/?format=json")
+    const ip = await fetch("https://api64.ipify.org/?format=json")
       .then((result) => result.json())
       .then((data) => data.ip);
+    console.log(ip);
   };
 
   useHotkeys("ArrowUp", () => {
@@ -113,8 +114,9 @@ async function App() {
     // then write that to firebase
   };
 
-  const ip = await getCurrentIp();
-  console.log(ip);
+  useEffect(() => {
+    getCurrentIp();
+  }, []);
 
   return (
     <>
