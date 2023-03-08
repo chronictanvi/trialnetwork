@@ -28,19 +28,26 @@ let gridId = url.searchParams.get("gridId");
 // Step 3: Build out UI for load grid etc
 
 function App() {
-  useEffect(() => {
-    getCurrentIp();
-  });
-
   const [currentCoordinates, setCurrentCoordinates] = useState<
     [number, number]
   >([0, 0]);
 
-  //const [currentIp, setCurrentIp] = useState<string>("");
+  const [currentIp, setCurrentIp] = useState<string>("");
 
   // scenario: A,B,C,D play. then stop playing. A then visits the website later. B,C,D are not there. X,Y,Z also join. X,Y,Z get new colors but A still has old color.
 
   const [snapshot, loading, error] = useObject(ref(db, `/grids/${gridId}`));
+
+  useEffect(() => {
+    const getCurrentIp = async () => {
+      const ip: string = await fetch("https://api64.ipify.org/?format=json")
+        .then((result) => result.json())
+        .then((data) => data.ip);
+      setCurrentIp(ip);
+    };
+
+    getCurrentIp();
+  });
 
   const notify = () => toast("Wow so easy!");
 
@@ -49,13 +56,6 @@ function App() {
   const setCoords = (row: number, column: number) => {
     setCurrentCoordinates([row, column]);
     // TODO: Update firebase
-  };
-
-  const getCurrentIp = async () => {
-    const ip = await fetch("https://api64.ipify.org/?format=json")
-      .then((result) => result.json())
-      .then((data) => data.ip);
-    console.log(ip);
   };
 
   useHotkeys("ArrowUp", () => {
