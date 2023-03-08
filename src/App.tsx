@@ -46,6 +46,8 @@ function App() {
       setCurrentIp(ip.replaceAll(".", "-"));
     };
 
+    const
+
     getCurrentIp();
   });
 
@@ -58,7 +60,7 @@ function App() {
     // TODO: Update firebase
     // first make path. key= IP value=coordinate
     const path = `/grids/${gridId}/users/${currentIp}`;
-    set(ref(db, path), `${(currentCoordinates[0], currentCoordinates[1])}`);
+    set(ref(db, path), getCoordinateKey(currentCoordinates));
   };
 
   useHotkeys("ArrowUp", () => {
