@@ -28,11 +28,15 @@ let gridId = url.searchParams.get("gridId");
 // Step 3: Build out UI for load grid etc
 
 function App() {
+  useEffect(() => {
+    getCurrentIp();
+  });
+
   const [currentCoordinates, setCurrentCoordinates] = useState<
     [number, number]
   >([0, 0]);
 
-  const [currentIp, setCurrentIp] = useState<string>("");
+  //const [currentIp, setCurrentIp] = useState<string>("");
 
   // scenario: A,B,C,D play. then stop playing. A then visits the website later. B,C,D are not there. X,Y,Z also join. X,Y,Z get new colors but A still has old color.
 
@@ -113,10 +117,6 @@ function App() {
     // make a copy of squares, change all the values to null.
     // then write that to firebase
   };
-
-  useEffect(() => {
-    getCurrentIp();
-  }, []);
 
   return (
     <>
