@@ -43,7 +43,7 @@ function App() {
       const ip: string = await fetch("https://api64.ipify.org/?format=json")
         .then((result) => result.json())
         .then((data) => data.ip);
-      setCurrentIp(ip.replace(".", "-"));
+      setCurrentIp(ip.replaceAll(".", "-"));
     };
 
     getCurrentIp();
