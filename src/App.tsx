@@ -11,13 +11,21 @@ import { db } from "./firebase";
 import { ref, set } from "firebase/database";
 import { getCoordinateKey } from "./utils";
 
-// import { useHistory } from "react-router-dom";
+import Tutorial from "./Tutorial";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
 
 let gridId = url.searchParams.get("gridId");
 //if the grid id doesnt exist then we should be able to create a grid there.
+
+// March 8
+// Step 1: Trying to add a different colour for other uses
+// Step 2: Make Demo
+// Step 3: Build out UI for load grid etc
 
 function App() {
   const [currentCoordinates, setCurrentCoordinates] = useState<
@@ -26,23 +34,48 @@ function App() {
 
   const [snapshot, loading, error] = useObject(ref(db, `/grids/${gridId}`));
 
+  const notify = () => toast("Wow so easy!");
+
+  // -> made a new function that updates coordinates to firebase
+
+  const setCoords = (row: number, column: number) => {
+    setCurrentCoordinates([row, column]);
+    // TODO: Update firebase
+  };
+
   useHotkeys("ArrowUp", () => {
-    setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
+    let row = currentCoordinates[0];
+    let column = currentCoordinates[1];
+    setCoords(Math.max(row - 1, 0), column);
+    // setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
   });
   useHotkeys("ArrowDown", () => {
-    setCurrentCoordinates(([row, column]) => [
-      Math.min(row + 1, SQUARE_ROW_COUNT - 1),
-      column,
-    ]);
+    let row = currentCoordinates[0];
+    let column = currentCoordinates[1];
+    setCoords(Math.min(row + 1, SQUARE_ROW_COUNT - 1), column);
+
+    // setCurrentCoordinates(([row, column]) => [
+    // Math.min(row + 1, SQUARE_ROW_COUNT - 1),
+    // column,
+    // ]);
   });
+
   useHotkeys("ArrowLeft", () => {
-    setCurrentCoordinates(([row, column]) => [row, Math.max(column - 1, 0)]);
+    let row = currentCoordinates[0];
+    let column = currentCoordinates[1];
+    setCoords(row, Math.max(column - 1, 0));
+
+    // setCurrentCoordinates(([row, column]) => [row, Math.max(column - 1, 0)]);
   });
+
   useHotkeys("ArrowRight", () => {
-    setCurrentCoordinates(([row, column]) => [
-      row,
-      Math.min(column + 1, SQUARE_ROW_COUNT - 1),
-    ]);
+    let row = currentCoordinates[0];
+    let column = currentCoordinates[1];
+    setCoords(row, Math.min(column + 1, SQUARE_ROW_COUNT - 1));
+    // setCurrentCoordinates(([row, column]) => [
+    //   row,
+    //   Math.min(column + 1, SQUARE_ROW_COUNT - 1),
+    // ]);
   });
 
   const currentCoordsKey = getCoordinateKey(currentCoordinates);
@@ -77,10 +110,16 @@ function App() {
           <h1 className="text-left">Comrade</h1>
         </div>
         <div>
-          <p className="editorial pt-6 text-right text-sm">v0.2</p>
+          <p className="editorial text-zinc-400 pt-3 text-right text-sm">
+            v0.2
+          </p>
+          <p className="editorial text-zinc-400 text-right text-sm">
+            Desktop only
+          </p>
         </div>
       </div>
-      <div className=" grid grid-cols-2 my-5">
+      <Tutorial></Tutorial>
+      <div className=" grid grid-cols-2 my-10">
         <div>
           <h1
             className="text-base cursor-pointer text-left"
@@ -94,7 +133,23 @@ function App() {
         </div>
       </div>
 
-      <Grid squares={squares} currentCoordinates={currentCoordinates} />
+      <div>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer />
+      </div>
+
+      <div className="flex">
+        <div className="flex-none p-5">
+          <p> heuyaai </p>
+        </div>
+        <div className="flex-1">
+          <Grid squares={squares} currentCoordinates={currentCoordinates} />
+        </div>
+
+        <div className="flex-none p-5">
+          <p> hiii </p>{" "}
+        </div>
+      </div>
       <Form
         square={squares[currentCoordsKey]}
         setSquare={async (content) => {
