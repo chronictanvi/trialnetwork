@@ -30,32 +30,30 @@ let gridId = url.searchParams.get("gridId");
 function App() {
   const [snapshot, loading, error] = useObject(ref(db, `/grids/${gridId}`));
 
+  const [currentIp, setCurrentIp] = useState<string>("");
+
   const getCoordinatesForCurrentUser = function (): number[] {
     // when app starts get users (list of IP address and the current coordinate) for a grid using firebase snapshot
     const gridUsers = snapshot?.val().users;
     // from that list of users we are trying to find the position of the person who just visited the website (match the IP and fetch the last coordinates) -> so when the website is refreshed your cursor is always where it was last, persist a users coordinates across sessions.
 
     let result;
-    try {
-      const coordsKey = gridUsers[currentIp];
-      // if IP is not on the list, in that case coordsKey is undefined, then just set it to 00,00. else set it to the coordinate being set from firebase. rn my IP exists in the db but its still not setting :0
-      if (coordsKey !== undefined) {
-        result = getCoordinatesFromKey(coordsKey);
-      } else {
-        result = [0, 0];
-      }
-    } catch {
+
+    const coordsKey = gridUsers[currentIp];
+
+    if (coordsKey !== undefined) {
+      result = getCoordinatesFromKey(coordsKey);
+    } else {
       result = [0, 0];
     }
+
     console.log(result);
     return result;
   };
 
-  const [currentCoordinates, setCurrentCoordinates] = useState<number[]>(() =>
-    getCoordinatesForCurrentUser()
-  );
-
-  const [currentIp, setCurrentIp] = useState<string>("");
+  const [currentCoordinates, setCurrentCoordinates] = useState<number[]>([
+    0, 0,
+  ]);
 
   // scenario: A,B,C,D play. then stop playing. A then visits the website later. B,C,D are not there. X,Y,Z also join. X,Y,Z get new colors but A still has old color.
 
@@ -64,7 +62,9 @@ function App() {
       const ip: string = await fetch("https://api64.ipify.org/?format=json")
         .then((result) => result.json())
         .then((data) => data.ip);
-      setCurrentIp(ip.replaceAll(".", "-"));
+      if (currentIp === "") {
+        setCurrentIp(ip.replaceAll(".", "-"));
+      }
     };
 
     getCurrentIp();
@@ -194,6 +194,7 @@ function App() {
         setSquare={async (content) => {
           set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
             content,
+            currentIp,
           });
         }}
       />
