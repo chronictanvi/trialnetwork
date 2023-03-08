@@ -43,7 +43,7 @@ function App() {
       const ip: string = await fetch("https://api64.ipify.org/?format=json")
         .then((result) => result.json())
         .then((data) => data.ip);
-      setCurrentIp(ip);
+      setCurrentIp(ip.replace(".", "-"));
     };
 
     getCurrentIp();
@@ -56,6 +56,9 @@ function App() {
   const setCoords = (row: number, column: number) => {
     setCurrentCoordinates([row, column]);
     // TODO: Update firebase
+    // first make path. key= IP value=coordinate
+    const path = `/grids/${gridId}/users/${currentIp}`;
+    set(ref(db, path), `${(currentCoordinates[0], currentCoordinates[1])}`);
   };
 
   useHotkeys("ArrowUp", () => {
