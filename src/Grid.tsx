@@ -3,8 +3,17 @@ import { classNames, getCoordinatesFromIndex } from "./utils";
 
 interface Props {
   squares: { [key: string]: { content: string; author: string } };
-  currentCoordinates: number[];
-}
+  currentCoordinates: number[],
+  authors: string[],
+};
+
+const SQUARE_COLOURS = [
+  "bg-green-500",
+  "bg-rose-400",
+  "bg-fuchsia-400",
+  "bg-indigo-400",
+  "bg-teal-400",
+];
 
 export default function Grid({ squares, currentCoordinates }: Props) {
   const allSquares = Array(SQUARE_ROW_COUNT * SQUARE_ROW_COUNT).fill(null);
@@ -16,6 +25,7 @@ export default function Grid({ squares, currentCoordinates }: Props) {
     const index = row * SQUARE_ROW_COUNT + column;
 
     const color = "bg-green-500";
+    // this should change for every user
 
     allSquares[index] = { color, ...post };
   }

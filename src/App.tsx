@@ -86,6 +86,15 @@ function App() {
 
   const squares = snapshot?.val();
 
+  // getting all the authors in a grid in all squares
+  const getAuthorsForGrid = () => {
+    return Object.values(squares).forEach((square) => {
+      if (square["author"]) {
+        authors.push(square["author"]);
+      }
+    });
+  };
+
   const handleNewGrid = () => {
     if (!gridId) {
       gridId = uuidv4();
