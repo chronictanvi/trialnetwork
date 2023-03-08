@@ -32,25 +32,6 @@ function App() {
 
   const [currentIp, setCurrentIp] = useState<string>("");
 
-  const getCoordinatesForCurrentUser = function (): number[] {
-    // when app starts get users (list of IP address and the current coordinate) for a grid using firebase snapshot
-    const gridUsers = snapshot?.val().users;
-    // from that list of users we are trying to find the position of the person who just visited the website (match the IP and fetch the last coordinates) -> so when the website is refreshed your cursor is always where it was last, persist a users coordinates across sessions.
-
-    let result;
-
-    const coordsKey = gridUsers[currentIp];
-
-    if (coordsKey !== undefined) {
-      result = getCoordinatesFromKey(coordsKey);
-    } else {
-      result = [0, 0];
-    }
-
-    console.log(result);
-    return result;
-  };
-
   const [currentCoordinates, setCurrentCoordinates] = useState<number[]>([
     0, 0,
   ]);
@@ -72,49 +53,25 @@ function App() {
 
   const notify = () => toast("Wow so easy!");
 
-  // -> made a new function that updates coordinates to firebase
-
-  const setCoords = (row: number, column: number) => {
-    setCurrentCoordinates([row, column]);
-    // TODO: Update firebase
-    // first make path. key= IP value=coordinate
-    const path = `/grids/${gridId}/users/${currentIp}`;
-    set(ref(db, path), getCoordinateKey(currentCoordinates));
-  };
-
   useHotkeys("ArrowUp", () => {
-    let row = currentCoordinates[0];
-    let column = currentCoordinates[1];
-    setCoords(Math.max(row - 1, 0), column);
-    // setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
+    setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
   });
   useHotkeys("ArrowDown", () => {
-    let row = currentCoordinates[0];
-    let column = currentCoordinates[1];
-    setCoords(Math.min(row + 1, SQUARE_ROW_COUNT - 1), column);
-
-    // setCurrentCoordinates(([row, column]) => [
-    // Math.min(row + 1, SQUARE_ROW_COUNT - 1),
-    // column,
-    // ]);
+    setCurrentCoordinates(([row, column]) => [
+      Math.min(row + 1, SQUARE_ROW_COUNT - 1),
+      column,
+    ]);
   });
 
   useHotkeys("ArrowLeft", () => {
-    let row = currentCoordinates[0];
-    let column = currentCoordinates[1];
-    setCoords(row, Math.max(column - 1, 0));
-
-    // setCurrentCoordinates(([row, column]) => [row, Math.max(column - 1, 0)]);
+    setCurrentCoordinates(([row, column]) => [row, Math.max(column - 1, 0)]);
   });
 
   useHotkeys("ArrowRight", () => {
-    let row = currentCoordinates[0];
-    let column = currentCoordinates[1];
-    setCoords(row, Math.min(column + 1, SQUARE_ROW_COUNT - 1));
-    // setCurrentCoordinates(([row, column]) => [
-    //   row,
-    //   Math.min(column + 1, SQUARE_ROW_COUNT - 1),
-    // ]);
+    setCurrentCoordinates(([row, column]) => [
+      row,
+      Math.min(column + 1, SQUARE_ROW_COUNT - 1),
+    ]);
   });
 
   const currentCoordsKey = getCoordinateKey(currentCoordinates);
@@ -193,8 +150,8 @@ function App() {
         square={squares[currentCoordsKey]}
         setSquare={async (content) => {
           set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
-            content,
-            currentIp,
+            content: content,
+            author: currentIp,
           });
         }}
       />

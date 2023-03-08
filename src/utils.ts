@@ -21,8 +21,3 @@ export function getCoordinateKey(coords: number[]): string {
 
   return `${rowString},${colString}`;
 }
-//convert string 00,05 -> list [0,5]
-export function getCoordinatesFromKey(key: string): number[] {
-  const coordinates = key.split(",").map((item) => parseInt(item));
-  return coordinates;
-}
