@@ -32,6 +32,10 @@ function App() {
     [number, number]
   >([0, 0]);
 
+  const [currentIp, setCurrentIp] = useState<string>("");
+
+  // scenario: A,B,C,D play. then stop playing. A then visits the website later. B,C,D are not there. X,Y,Z also join. X,Y,Z get new colors but A still has old color.
+
   const [snapshot, loading, error] = useObject(ref(db, `/grids/${gridId}`));
 
   const notify = () => toast("Wow so easy!");
@@ -41,6 +45,12 @@ function App() {
   const setCoords = (row: number, column: number) => {
     setCurrentCoordinates([row, column]);
     // TODO: Update firebase
+  };
+
+  const getCurrentIp = () => {
+    return fetch("https://api64.ipify.org/?format=json")
+      .then((result) => result.json())
+      .then((data) => data.ip);
   };
 
   useHotkeys("ArrowUp", () => {
@@ -102,6 +112,8 @@ function App() {
     // make a copy of squares, change all the values to null.
     // then write that to firebase
   };
+
+  console.log(getCurrentIp());
 
   return (
     <>
