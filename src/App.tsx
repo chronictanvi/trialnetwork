@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useObject } from "react-firebase-hooks/database";
 import { db } from "./firebase";
 import { ref, set } from "firebase/database";
-import { getCoordinateKey, getCoordinatesFromKey } from "./utils";
+import { getCoordinateKey } from "./utils";
 
 import Tutorial from "./Tutorial";
 
@@ -86,13 +86,15 @@ function App() {
 
   const squares = snapshot?.val();
 
-  // getting all the authors in a grid in all squares
-  const getAuthorsForGrid = () => {
-    return Object.values(squares).forEach((square) => {
+  // getting unique authors for a grid in all squares
+  const getUniqueAuthorsForGrid = function (): string[] {
+    let authors: string[] = [];
+    Object.values(squares).forEach((square) => {
       if (square["author"]) {
         authors.push(square["author"]);
       }
     });
+    return [...new Set(authors)];
   };
 
   const handleNewGrid = () => {
@@ -148,7 +150,11 @@ function App() {
           <p> heuyaai </p>
         </div>
         <div className="flex-1">
-          <Grid squares={squares} currentCoordinates={currentCoordinates} />
+          <Grid
+            squares={squares}
+            currentCoordinates={currentCoordinates}
+            authors={getUniqueAuthorsForGrid()}
+          />
         </div>
 
         <div className="flex-none p-5">
