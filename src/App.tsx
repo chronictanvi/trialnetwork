@@ -139,18 +139,19 @@ function App() {
           <h1 className="text-base text-left">Load Grid</h1>
         </div>
       </div>
-
+      {/* 
       <div>
         <button onClick={notify}>Notify!</button>
         <ToastContainer />
-      </div>
+      </div> */}
 
       <div className="flex">
         <div className="flex-none p-5">
-          <p> heuyaai </p>
+          <p> left </p>
         </div>
         <div className="flex-1">
           <Grid
+            currentIp={currentIp}
             squares={squares}
             currentCoordinates={currentCoordinates}
             authors={getUniqueAuthorsForGrid()}
@@ -158,7 +159,7 @@ function App() {
         </div>
 
         <div className="flex-none p-5">
-          <p> hiii </p>{" "}
+          <p> right </p>{" "}
         </div>
       </div>
       <Form
