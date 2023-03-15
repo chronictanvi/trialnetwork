@@ -163,8 +163,12 @@ function App() {
               ? squares[currentCoordsKey].editedAt
               : "-"}
           </p>
-
-          {/* need to add condition here if there is nothing in the editedAt */}
+          <h1 className="text-lg cursor-pointer pt-10 text-left">Prompt</h1>
+          <p className="font-mono text-left text-zinc-400 w-6/12 text-xs px-1 ">
+            {" "}
+            Start from the center. Imagine a 'tolerable' version tending to the
+            left. An 'intolerable' version tending to the right.
+          </p>
         </div>
       </div>
 
