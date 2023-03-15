@@ -1,5 +1,7 @@
+import { Square } from "./types";
+
 interface Props {
-  square?: { content: string; author: string  };
+  square?: Square;
   setSquare: (text: string) => void;
 }
 export default function Form({ square, setSquare }: Props) {

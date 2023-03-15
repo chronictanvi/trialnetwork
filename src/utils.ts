@@ -25,7 +25,7 @@ export function getCoordinateKey(coords: number[]): string {
 
 //hashing algortihm takes a string and turns it into a number (index into a array)
 // useful when you want to put items into a lookup table
-function hashCode(str) {
+function hashCode(str: string) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     let chr = str.charCodeAt(i);
@@ -36,7 +36,7 @@ function hashCode(str) {
   return Math.abs(hash);
 }
 
-export function getColorFromIp(ip) {
+export function getColorFromIp(ip: string) {
   let hash = hashCode(ip);
   const SQUARE_COLOURS = [
     "bg-green-500",

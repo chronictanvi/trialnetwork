@@ -13,12 +13,14 @@ import { getCoordinateKey } from "./utils";
 
 import Tutorial from "./Tutorial";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
+import { Square  } from "./types";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
+
 
 let gridId = url.searchParams.get("gridId");
 //if the grid id doesnt exist then we should be able to create a grid there.
@@ -85,14 +87,14 @@ function App() {
   }
   // see: https://github.com/csfrequency/react-firebase-hooks/tree/09bf06b28c82b4c3c1beabb1b32a8007232ed045/database
 
-  const squares = snapshot?.val();
+  const squares: { [key: string]: Square } = snapshot?.val();
 
   // getting unique authors for a grid in all squares
   const getUniqueAuthorsForGrid = function (): string[] {
     let authors: string[] = [];
-    Object.values(squares).forEach((square) => {
-      if (square["author"]) {
-        authors.push(square["author"]);
+    Object.values(squares).forEach((square: Square) => {
+      if (square.author) {
+        authors.push(square.author);
       }
     });
     return [...new Set(authors)];
