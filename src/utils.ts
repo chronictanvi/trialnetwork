@@ -1,4 +1,3 @@
-import { map } from "@firebase/util";
 import { SQUARE_ROW_COUNT } from "./constants";
 
 export function classNames(...classes: (string | boolean)[]): string {

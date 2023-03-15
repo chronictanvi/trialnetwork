@@ -13,14 +13,11 @@ import { getCoordinateKey } from "./utils";
 
 import Tutorial from "./Tutorial";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
-import { Square  } from "./types";
+import { Square } from "./types";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
-
 
 let gridId = url.searchParams.get("gridId");
 //if the grid id doesnt exist then we should be able to create a grid there.
@@ -54,7 +51,7 @@ function App() {
     getCurrentIp();
   });
 
-  const notify = () => toast("Wow so easy!");
+  // const notify = () => toast("Wow so easy!");
 
   useHotkeys("ArrowUp", () => {
     setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
