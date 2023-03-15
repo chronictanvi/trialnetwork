@@ -127,19 +127,22 @@ function App() {
         </div>
       </div>
       <Tutorial></Tutorial>
-      <div className=" grid grid-cols-2 my-10">
-        <div>
-          <h1
-            className="text-base cursor-pointer text-left"
-            onClick={handleNewGrid}
-          >
-            New Grid
-          </h1>
-        </div>
-        <div>
-          <h1 className="text-base text-left">Load Grid</h1>
+      <div className=" grid grid-cols-2 my-5">
+        <div className=" grid grid-cols-2 my-5">
+          <div>
+            <h1
+              className="text-lg cursor-pointer text-left"
+              onClick={handleNewGrid}
+            >
+              New Grid
+            </h1>
+          </div>
+          <div>
+            <h1 className="text-lg text-left">Load Grid</h1>
+          </div>
         </div>
       </div>
+
       {/* 
       <div>
         <button onClick={notify}>Notify!</button>
