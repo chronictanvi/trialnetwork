@@ -15,6 +15,7 @@ import Tutorial from "./Tutorial";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import moment from "moment";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
@@ -114,10 +115,10 @@ function App() {
     <>
       <div className=" grid grid-cols-2">
         <div>
-          <h1 className="text-left">Comrade</h1>
+          <h1 className="text-left text-5xl border-1 border-white">Comrade</h1>
         </div>
         <div>
-          <p className="editorial text-zinc-400 pt-3 text-right text-sm">
+          <p className="editorial text-zinc-400 pt-5 text-right text-sm">
             v0.2
           </p>
           <p className="editorial text-zinc-400 text-right text-sm">
@@ -146,10 +147,7 @@ function App() {
       </div> */}
 
       <div className="flex">
-        <div className="flex-none p-5">
-          <p> left </p>
-        </div>
-        <div className="flex-1">
+        <div className="flex-none">
           <Grid
             currentIp={currentIp}
             squares={squares}
@@ -158,19 +156,30 @@ function App() {
           />
         </div>
 
-        <div className="flex-none p-5">
-          <p> right </p>{" "}
+        <div className=" px-5">
+          <h1 className="text-lg cursor-pointer text-left">Timestamp</h1>
+          <p className="font-mono text-left text-zinc-400 text-xs px-1 ">
+            {squares[currentCoordsKey]?.editedAt
+              ? squares[currentCoordsKey].editedAt
+              : "-"}
+          </p>
+
+          {/* need to add condition here if there is nothing in the editedAt */}
         </div>
       </div>
-      <Form
-        square={squares[currentCoordsKey]}
-        setSquare={async (content) => {
-          set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
-            content: content,
-            author: currentIp,
-          });
-        }}
-      />
+
+      <div className="text-left">
+        <Form
+          square={squares[currentCoordsKey]}
+          setSquare={async (content) => {
+            set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
+              content: content,
+              author: currentIp,
+              editedAt: moment(new Date()).format("LLLL"),
+            });
+          }}
+        />
+      </div>
     </>
   );
 }

@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 
 export default function Tutorial() {
   return (
-    <div className="my-5">
-      <h1 className="text-2xl text-left py-5"> Navigation </h1>
+    <div className="my-5 mt-10">
+      <p className="font-editorial text-left w-9/12 ">
+        {" "}
+        <p> A conversation unfolds through space and time.</p>{" "}
+        <p>
+          Think about what you communicate through where you place your
+          thoughts, and how they branch out.{" "}
+        </p>
+      </p>
+
+      <h1 className="text-2xl text-left mt-10 py-5"> Navigation </h1>
       <div className="flex">
         <div className="flex-none">
           <img
