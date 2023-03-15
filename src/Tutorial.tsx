@@ -21,7 +21,7 @@ export default function Tutorial() {
           <div className="flex-none">
             <img
               className="w-28"
-              src="public/keys.png"
+              src="./public/keys.png"
               alt="Keyboard Navigation"
             ></img>
           </div>
