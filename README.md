@@ -1,22 +1,42 @@
+# grid-collab
 
+## to do
 
+#### fix
 
-## questions
-- what is the deal with pnpm lock file 
+— real time collaboration
+— keyboard nav perfect
 
-ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with package.json
-Error: Command "pnpm install" exited with 1
+#### add
 
+- [ ] active cursor color
+- [ ] past post color identification
+- [ ] history of cell (activity stream)
 
+— link to firebase
 
-## Getting Started
+----— export?
 
-First, run the development server:
+### other open questions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+— label axis? just add text anywhere in the background?
+— onboarding
+
+— more infinite canvas?
+— prevent more than 3 edits to a single post? or similar edits to all post? what are the social agreements? nothing from mod side?
+
+— images?
+— coonections ???
+— drag posts around (like rearrange post its?
+
+— zoom in / zoom out (re: infinite canvas)
+
+- undo?
+
+should we able to see all posts at once?
+should the grid be connected by noodles?
+
+#### out of scope
+
+— offline?
+— need login? (no, just alias? or nothing?)
