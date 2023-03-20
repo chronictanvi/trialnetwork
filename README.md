@@ -12,8 +12,7 @@
 - [x] active cursor color
 - [x] past post color identification
 - [ ] history of cell (activity stream)
-
-— [x] link to firebase
+- [x] link to firebase
 
 ----— export?
 
