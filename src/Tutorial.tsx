@@ -33,6 +33,15 @@ export default function Tutorial() {
             <p>Click anywhere on the webpage to submit.</p>
           </div>
         </div>
+
+        <div className="flex">
+          <div className="flex-none">
+            <img className="w-28" src="./public/red.png" alt="Cursor Nav"></img>
+          </div>
+          <div className="flex-1 text-left px-5 ">
+            <p className="font-editorial">This is your current position </p>
+          </div>
+        </div>
       </details>
     </div>
   );
