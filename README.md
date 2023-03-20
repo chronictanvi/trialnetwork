@@ -9,11 +9,11 @@
 
 #### add
 
-- [ ] active cursor color
-- [ ] past post color identification
+- [x] active cursor color
+- [x] past post color identification
 - [ ] history of cell (activity stream)
 
-— link to firebase
+— [x] link to firebase
 
 ----— export?
 
@@ -40,3 +40,4 @@ should the grid be connected by noodles?
 
 — offline?
 — need login? (no, just alias? or nothing?)
+- [x] ip
