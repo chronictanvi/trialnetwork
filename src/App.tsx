@@ -127,18 +127,27 @@ function App() {
         </div>
       </div>
       <Tutorial></Tutorial>
-      <div className=" grid grid-cols-2 my-5">
-        <div className=" grid grid-cols-2 my-5">
+      <div className=" grid grid-cols-2 my-5 ">
+        <div className=" grid grid-cols-2 my-5 ">
           <div>
             <h1
               className="text-lg cursor-pointer text-left"
               onClick={handleNewGrid}
             >
               New Grid
+              <p className="font-mono text-zinc-400 text-sm mr-5">
+                {" "}
+                Generates a New Grid at the next 'ID' number. To go to grid,
+                change the URL to the next number.{" "}
+              </p>
             </h1>
           </div>
           <div>
             <h1 className="text-lg text-left">Load Grid</h1>
+            <p className="font-mono text-zinc-400  text-left text-sm mr-5">
+              {" "}
+              To load a specific grid, change the gridId='number' in the URL.{" "}
+            </p>
           </div>
         </div>
       </div>
@@ -161,7 +170,7 @@ function App() {
 
         <div className=" px-5">
           <h1 className="text-lg cursor-pointer text-left">Timestamp</h1>
-          <p className="font-mono text-left text-zinc-400 text-xs px-1 ">
+          <p className="font-mono text-left text-zinc-400 text-sm px-1 ">
             {squares[currentCoordsKey]?.editedAt
               ? squares[currentCoordsKey].editedAt
               : "-"}
