@@ -15,6 +15,7 @@ import Tutorial from "./Tutorial";
 
 import moment from "moment";
 import { Square } from "./types";
+import Prompt from "./Prompt";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
@@ -165,12 +166,7 @@ function App() {
               ? squares[currentCoordsKey].editedAt
               : "-"}
           </p>
-          <h1 className="text-lg cursor-pointer pt-10 text-left">Prompt</h1>
-          <p className="font-mono text-left text-zinc-400 w-6/12 text-xs px-1 ">
-            {" "}
-            Start from the center. Imagine a 'tolerable' version tending to the
-            left. An 'intolerable' version tending to the right.
-          </p>
+          <Prompt />
         </div>
       </div>
 
