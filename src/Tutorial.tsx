@@ -21,7 +21,7 @@ export default function Tutorial() {
           <div className="flex-none">
             <img
               className="w-28"
-              src="./public/keys.png"
+              src="/src/assets/keys.png"
               alt="Keyboard Navigation"
             ></img>
           </div>
@@ -38,7 +38,7 @@ export default function Tutorial() {
           <div className="flex-none px-10">
             <img
               className="object-center w-8 "
-              src="./public/red.png"
+              src="/src/assets/red.png"
               alt="Cursor Nav"
             ></img>
           </div>
