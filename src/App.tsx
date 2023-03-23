@@ -126,8 +126,11 @@ function App() {
           </p>
         </div>
       </div>
-      <Tutorial></Tutorial>
-      <div className=" grid grid-cols-2 my-5 ">
+      <div className=" grid grid-cols-2">
+        <div>
+          <Tutorial></Tutorial>
+        </div>
+
         <div className=" grid grid-cols-2 my-5 ">
           <div>
             <h1
