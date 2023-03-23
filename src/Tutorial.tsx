@@ -1,4 +1,5 @@
 import imgUrl from "./assets/keys.png";
+import imgUrl1 from "./assets/red.png";
 
 export default function Tutorial() {
   return (
@@ -34,7 +35,7 @@ export default function Tutorial() {
           <div className="flex-none px-10">
             <img
               className="object-center w-8 "
-              src="src/assets/red.png"
+              src={imgUrl1}
               alt="Cursor Nav"
             ></img>
           </div>
