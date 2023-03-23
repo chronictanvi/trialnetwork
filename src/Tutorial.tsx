@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import imgUrl from "./assets/keys.png";
 
 export default function Tutorial() {
   return (
@@ -19,11 +19,7 @@ export default function Tutorial() {
 
         <div className="flex">
           <div className="flex-none">
-            <img
-              className="w-28"
-              src="src/assets/keys.png"
-              alt="Keyboard Navigation"
-            ></img>
+            <img className="w-28" src={imgUrl} alt="Keyboard Navigation"></img>
           </div>
           <div className="flex-1 text-left px-5 ">
             <p className="font-editorial">
