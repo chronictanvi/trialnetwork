@@ -171,7 +171,7 @@ function App() {
           />
         </div>
 
-        <div className=" px-5">
+        <div className=" pl-10">
           <h1 className="text-lg cursor-pointer text-left">Timestamp</h1>
           <p className="font-mono text-left text-zinc-400 text-sm px-1 ">
             {squares[currentCoordsKey]?.editedAt

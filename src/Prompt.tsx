@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 
 const prompts = [
-  "What's your favorite color?",
-  "What's your favorite book?",
-  "What's your favorite movie?",
-  "What's your favorite food?",
+  "Enter your content anywhere. TIP : If you're responding to an existing square, meditate on how its content makes you feel. Respond by entering your content in an adjacent square. Move up if you feel happy. Down if you feel discontent. Left if you feel confused. Right if you feel fearful.",
 ];
 
 const Prompt = () => {
@@ -46,7 +43,7 @@ const Prompt = () => {
         </button>
       </h1>
 
-      <p className="font-mono text-left text-zinc-400 w-6/9 text-small px-1 ">
+      <p className="font-mono text-left text-zinc-400 w-6/12 text-small px-1 ">
         {currentPrompt}
       </p>
     </div>
