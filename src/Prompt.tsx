@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const prompts = [
-  "Enter your content anywhere. TIP : If you're responding to an existing square, meditate on how its content makes you feel. Respond by entering your content in an adjacent square. Move up if you feel happy. Down if you feel discontent. Left if you feel confused. Right if you feel fearful.",
+  " TIP : Try to remain consistent in why you choose to reply in a certain direction. Eg: relative north to the square you're reponding to would be on top of it. What does it mean to move upwards in this space?s  ",
 ];
 
 const Prompt = () => {
@@ -20,6 +20,11 @@ const Prompt = () => {
     <div>
       <h1 className="text-lg cursor-pointer pt-10 text-left">
         Prompt{" "}
+        <p className="w-1/2 font-mono text-zinc-300 text-sm">
+          {" "}
+          If you're responding to an existing square, meditate on how its
+          content makes you feel.
+        </p>
         {/* <button
           className="flex items-center mb-3 px-2 py-1 font-medium text-white bg-red-300 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
           onClick={getRandomPrompt}
@@ -43,7 +48,7 @@ const Prompt = () => {
         </button> */}
       </h1>
 
-      <p className="font-mono text-left text-zinc-400 w-6/12 text-small px-1 ">
+      <p className="font-mono text-left pt-5 text-zinc-300 w-1/2 text-sm ">
         {currentPrompt}
       </p>
     </div>

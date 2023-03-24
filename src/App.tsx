@@ -171,7 +171,7 @@ function App() {
           />
         </div>
 
-        <div className=" pl-10">
+        <div className=" flex flex-col pl-10">
           <h1 className="text-lg cursor-pointer text-left">Timestamp</h1>
           <p className="font-mono text-left text-zinc-400 text-sm px-1 ">
             {squares[currentCoordsKey]?.editedAt
@@ -179,20 +179,18 @@ function App() {
               : "-"}
           </p>
           <Prompt />
-        </div>
-      </div>
 
-      <div className="text-left">
-        <Form
-          square={squares[currentCoordsKey]}
-          setSquare={async (content) => {
-            set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
-              content: content,
-              author: currentIp,
-              editedAt: moment(new Date()).format("LLLL"),
-            });
-          }}
-        />
+          <Form
+            square={squares[currentCoordsKey]}
+            setSquare={async (content) => {
+              set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
+                content: content,
+                author: currentIp,
+                editedAt: moment(new Date()).format("LLLL"),
+              });
+            }}
+          />
+        </div>
       </div>
     </>
   );
