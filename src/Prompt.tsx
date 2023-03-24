@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, version } from "react";
 
-const prompts = [
-  " TIP : Try to remain consistent in why you choose to reply in a certain direction. Eg: relative north to the square you're reponding to would be on top of it. What does it mean to move upwards in this space?s  ",
-];
+const prompts = [" UP = happy  , DOWN = sad"];
 
 const Prompt = () => {
   const [currentPrompt, setCurrentPrompt] = useState("");
@@ -19,11 +17,11 @@ const Prompt = () => {
   return (
     <div>
       <h1 className="text-lg cursor-pointer pt-10 text-left">
-        Prompt{" "}
+        TELL ME A SECRET!{" "}
         <p className="w-1/2 font-mono text-zinc-300 text-sm">
           {" "}
-          If you're responding to an existing square, meditate on how its
-          content makes you feel.
+          Try to use the position of your square as a signifier for how you feel
+          about a secret.
         </p>
         {/* <button
           className="flex items-center mb-3 px-2 py-1 font-medium text-white bg-red-300 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
