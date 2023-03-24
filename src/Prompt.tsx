@@ -17,11 +17,11 @@ const Prompt = () => {
   return (
     <div>
       <h1 className="text-lg cursor-pointer pt-10 text-left">
-        TELL ME A SECRET!{" "}
-        <p className="w-1/2 font-mono text-zinc-300 text-sm">
+        BLIND DATE!{" "}
+        <p className="w-1/2 font-mono text-zinc-300 py-5 text-sm">
           {" "}
-          Try to use the position of your square as a signifier for how you feel
-          about a secret.
+          Try to use the position of your square as a signifier for how you
+          feel.
         </p>
         {/* <button
           className="flex items-center mb-3 px-2 py-1 font-medium text-white bg-red-300 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
