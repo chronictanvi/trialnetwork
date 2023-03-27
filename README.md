@@ -1,6 +1,6 @@
-# grid-collab
+# Comrade
 
-## to do
+## Features
 
 #### fix
 
