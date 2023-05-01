@@ -1,6 +1,6 @@
 import { useState, useEffect, version } from "react";
 
-const prompts = [" UP = happy  , DOWN = sad"];
+const prompts = [" UP = agree  , DOWN = disagree"];
 
 const Prompt = () => {
   const [currentPrompt, setCurrentPrompt] = useState("");
@@ -17,11 +17,10 @@ const Prompt = () => {
   return (
     <div>
       <h1 className="text-lg cursor-pointer pt-10 text-left">
-        BLIND DATE!{" "}
+        DISAGREE{" "}
         <p className="w-1/2 font-mono text-zinc-300 py-5 text-sm">
           {" "}
-          Try to use the position of your square as a signifier for how you
-          feel.
+          Find something to disagree on, and navigate the disagreement
         </p>
         {/* <button
           className="flex items-center mb-3 px-2 py-1 font-medium text-white bg-red-300 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
