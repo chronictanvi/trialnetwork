@@ -38,11 +38,15 @@ function hashCode(str: string) {
 export function getColorFromIp(ip: string) {
   let hash = hashCode(ip);
   const SQUARE_COLOURS = [
-    "bg-green-500",
     "bg-rose-400",
     "bg-fuchsia-400",
     "bg-indigo-400",
     "bg-teal-400",
+    "bg-indigo-300",
+    "bg-rose-200",
+    "bg-teal-200",
+    "bg-amber-200",
+    "bg-purple-200",
   ];
   console.log(hash);
   const index = hash % SQUARE_COLOURS.length;
