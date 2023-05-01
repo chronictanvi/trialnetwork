@@ -13,8 +13,9 @@ import { getCoordinateKey } from "./utils";
 
 import Tutorial from "./Tutorial";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import moment from "moment";
+import { Square } from "./types";
+import Prompt from "./Prompt";
 
 const url = new URL(document.location.toString());
 //url is a built in datatype that javascript for browser has that allows u to take a string and read it.
@@ -51,7 +52,7 @@ function App() {
     getCurrentIp();
   });
 
-  const notify = () => toast("Wow so easy!");
+  // const notify = () => toast("Wow so easy!");
 
   useHotkeys("ArrowUp", () => {
     setCurrentCoordinates(([row, column]) => [Math.max(row - 1, 0), column]);
@@ -84,14 +85,14 @@ function App() {
   }
   // see: https://github.com/csfrequency/react-firebase-hooks/tree/09bf06b28c82b4c3c1beabb1b32a8007232ed045/database
 
-  const squares = snapshot?.val();
+  const squares: { [key: string]: Square } = snapshot?.val();
 
   // getting unique authors for a grid in all squares
   const getUniqueAuthorsForGrid = function (): string[] {
     let authors: string[] = [];
-    Object.values(squares).forEach((square) => {
-      if (square["author"]) {
-        authors.push(square["author"]);
+    Object.values(squares).forEach((square: Square) => {
+      if (square.author) {
+        authors.push(square.author);
       }
     });
     return [...new Set(authors)];
@@ -114,10 +115,10 @@ function App() {
     <>
       <div className=" grid grid-cols-2">
         <div>
-          <h1 className="text-left">Comrade</h1>
+          <h1 className="text-left text-5xl border-1 border-white">Comrade</h1>
         </div>
         <div>
-          <p className="editorial text-zinc-400 pt-3 text-right text-sm">
+          <p className="editorial text-zinc-400 pt-5 text-right text-sm">
             v0.2
           </p>
           <p className="editorial text-zinc-400 text-right text-sm">
@@ -125,20 +126,35 @@ function App() {
           </p>
         </div>
       </div>
-      <Tutorial></Tutorial>
-      <div className=" grid grid-cols-2 my-10">
+      <div className=" grid grid-cols-2">
         <div>
-          <h1
-            className="text-base cursor-pointer text-left"
-            onClick={handleNewGrid}
-          >
-            New Grid
-          </h1>
+          <Tutorial></Tutorial>
         </div>
-        <div>
-          <h1 className="text-base text-left">Load Grid</h1>
+
+        <div className=" grid grid-cols-2 my-5 ">
+          <div>
+            <h1
+              className="text-lg cursor-pointer text-left"
+              onClick={handleNewGrid}
+            >
+              New Grid
+              <p className="font-mono text-zinc-400 text-sm mr-5">
+                {" "}
+                Generates a New Grid at the next 'ID' number. To go to grid,
+                change the URL to the next number.{" "}
+              </p>
+            </h1>
+          </div>
+          <div>
+            <h1 className="text-lg text-left">Load Grid</h1>
+            <p className="font-mono text-zinc-400  text-left text-sm mr-5">
+              {" "}
+              To load a specific grid, change the gridId='number' in the URL.{" "}
+            </p>
+          </div>
         </div>
       </div>
+
       {/* 
       <div>
         <button onClick={notify}>Notify!</button>
@@ -146,10 +162,7 @@ function App() {
       </div> */}
 
       <div className="flex">
-        <div className="flex-none p-5">
-          <p> left </p>
-        </div>
-        <div className="flex-1">
+        <div className="flex-none">
           <Grid
             currentIp={currentIp}
             squares={squares}
@@ -158,19 +171,27 @@ function App() {
           />
         </div>
 
-        <div className="flex-none p-5">
-          <p> right </p>{" "}
+        <div className=" flex flex-col pl-10">
+          <h1 className="text-lg cursor-pointer text-left">Timestamp</h1>
+          <p className="font-mono text-left text-zinc-400 text-sm px-1 ">
+            {squares[currentCoordsKey]?.editedAt
+              ? squares[currentCoordsKey].editedAt
+              : "-"}
+          </p>
+          <Prompt />
+
+          <Form
+            square={squares[currentCoordsKey]}
+            setSquare={async (content) => {
+              set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
+                content: content,
+                author: currentIp,
+                editedAt: moment(new Date()).format("LLLL"),
+              });
+            }}
+          />
         </div>
       </div>
-      <Form
-        square={squares[currentCoordsKey]}
-        setSquare={async (content) => {
-          set(ref(db, `/grids/${gridId}/${currentCoordsKey}`), {
-            content: content,
-            author: currentIp,
-          });
-        }}
-      />
     </>
   );
 }
