@@ -1,6 +1,15 @@
 # Comrade
 
 ## Features
+### Aug 18, 2024
+####Priority list 
+- homepage
+- if there is no grid id it should automatically assing you a unsued grid Id (and create in database)
+- maybe have a button that is 'share link' so you can send the URL easily to a frnd 
+
+
+
+
 
 #### fix
 
