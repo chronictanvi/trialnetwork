@@ -1,7 +1,6 @@
 import "./App.css";
 
 import { v4 as uuidv4 } from "uuid";
-
 import { db } from "./firebase";
 import { ref, set } from "firebase/database";
 
@@ -17,15 +16,14 @@ let gridId = url.searchParams.get("gridId");
 // Step 3: Build out UI for load grid etc
 
 function HomePage() {
-  const handleNewGrid = () => {
-    if (!gridId) {
-      gridId = uuidv4();
-      window.history.pushState({}, "", `?gridId=${gridId}`);
-    }
-    const newId = parseInt(gridId!) + 1;
+  const handleNewGrid = async () => {
+    // look at this later: doing the same thing as 26:  window.history.pushState({}, "", `?gridId=${gridId}`);
+
+    const newId = uuidv4();
     const path = `/grids/${newId}/00,00`;
-    set(ref(db, path), { content: "hello world!" });
-    history.push(`?gridId=${newId}`);
+    console.log(path);
+    await set(ref(db, path), { content: "hello world!" });
+    window.location.replace(`?gridId=${newId}`);
   };
 
   return (
