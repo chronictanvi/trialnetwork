@@ -1,9 +1,10 @@
 import { SQUARE_ROW_COUNT } from "./constants";
+import { Square } from "./types";
 import { classNames, getCoordinatesFromIndex } from "./utils";
 import { getColorFromIp } from "./utils";
 
 interface Props {
-  squares: { [key: string]: { content: string; author: string } };
+  squares: { [key: string]: Square };
   currentCoordinates: number[];
   authors: string[];
   currentIp: string;

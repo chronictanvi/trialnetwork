@@ -1,4 +1,3 @@
-import { map } from "@firebase/util";
 import { SQUARE_ROW_COUNT } from "./constants";
 
 export function classNames(...classes: (string | boolean)[]): string {
@@ -25,7 +24,7 @@ export function getCoordinateKey(coords: number[]): string {
 
 //hashing algortihm takes a string and turns it into a number (index into a array)
 // useful when you want to put items into a lookup table
-function hashCode(str) {
+function hashCode(str: string) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     let chr = str.charCodeAt(i);
@@ -36,14 +35,18 @@ function hashCode(str) {
   return Math.abs(hash);
 }
 
-export function getColorFromIp(ip) {
+export function getColorFromIp(ip: string) {
   let hash = hashCode(ip);
   const SQUARE_COLOURS = [
-    "bg-green-500",
     "bg-rose-400",
     "bg-fuchsia-400",
     "bg-indigo-400",
     "bg-teal-400",
+    "bg-indigo-300",
+    "bg-rose-200",
+    "bg-teal-200",
+    "bg-amber-200",
+    "bg-purple-200",
   ];
   console.log(hash);
   const index = hash % SQUARE_COLOURS.length;
