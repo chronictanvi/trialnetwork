@@ -42,7 +42,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className=" grid grid-cols-2 my-5 ">
+      <div className=" grid grid-cols-2 my-4 ">
         <div>
           <button
             className="text-lg mb-4 cursor-pointer text-left bg-transparent border-solid border-2 border-sky-500 "
